@@ -1,16 +1,15 @@
 {
   "files": {
     "main.css": "/SlimHongReact/static/css/main.f855e6bc.css",
-    "main.js": "/SlimHongReact/static/js/main.87d8f556.js",
+    "main.js": "/SlimHongReact/static/js/main.927504d8.js",
     "static/js/922.fd0fc09e.chunk.js": "/SlimHongReact/static/js/922.fd0fc09e.chunk.js",
-    "static/media/logo.svg": "/SlimHongReact/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/SlimHongReact/index.html",
     "main.f855e6bc.css.map": "/SlimHongReact/static/css/main.f855e6bc.css.map",
-    "main.87d8f556.js.map": "/SlimHongReact/static/js/main.87d8f556.js.map",
+    "main.927504d8.js.map": "/SlimHongReact/static/js/main.927504d8.js.map",
     "922.fd0fc09e.chunk.js.map": "/SlimHongReact/static/js/922.fd0fc09e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.87d8f556.js"
+    "static/js/main.927504d8.js"
   ]
 }

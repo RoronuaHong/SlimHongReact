@@ -1,13 +1,27 @@
 import Root from './Root';
-import MyTodoList from '../containers/MyTodoList';
 import { createBrowserRouter } from 'react-router-dom';
+
+import Home from '../components/Home';
+import Other from '../components/Other';
+import About from '../components/About';
+import MyTodoList from '../containers/MyTodoList';
 
 const Routers = createBrowserRouter([{
   path: '/',
-  element: <Root />
-}, {
-  path: '/mytodolist',
-  element: <MyTodoList />
+  element: <Root />,
+  children: [{
+    path: '/',
+    element: <Home /> // 默认子路由组件
+  }, {
+    path: '/mytodolist',
+    element: <MyTodoList /> // 默认子路由组件
+  }, {
+    path: '/other',
+    element: <Other />
+  }, {
+    path: '/about',
+    element: <About />
+  }]
 }]);
 
 

@@ -47,7 +47,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "sass": "^1.78.0"
   },
   "homepage": "https://roronuahong.github.io/SlimHongReact"
 }

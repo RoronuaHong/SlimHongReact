@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const { Header } = Layout;
 
-const NavBar: React.FC = () => {
+const Root: React.FC = () => {
   const location = useLocation(); // 获取当前路由路径
   const selectedKey = location.pathname === '/' ? '1' : '2'; // 根据路径确定选中的菜单项
 
@@ -35,4 +35,4 @@ const NavBar: React.FC = () => {
   );
 };
 
-export default NavBar;
+export default Root;

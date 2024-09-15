@@ -1,18 +1,20 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Routers from './routes/index';
+import { BrowserRouter as Router, Route, Routes, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 
-import MyTodoList from './containers/MyTodoList'
-import Home from './components/Home';
+// import Home from './components/Home';
+
+// const router = createBrowserRouter(createRoutesFromElements(
+//   <Route path="/" element={<Home />}>
+//     <Route path="/mytodolist" element={<MyTodoList />} />
+//   </Route>
+// ));
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/mytodolist" element={<MyTodoList />} />
-      </Routes>
-    </Router>
+    <RouterProvider router={Routers} />
   );
 }
+
 
 export default App;

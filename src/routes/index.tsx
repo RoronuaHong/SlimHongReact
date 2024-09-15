@@ -4,7 +4,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Home from '../components/Home';
 import Other from '../components/Other';
 import About from '../components/About';
-import MyTodoList from '../containers/MyTodoList';
+import MyTodoList from '../components/MyTodoList';
 
 const Routers = createBrowserRouter([{
   path: '/',

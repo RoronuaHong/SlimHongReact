@@ -1,66 +1,53 @@
-// import React from 'react';
-// import { Layout, Menu } from 'antd';
-// import { HomeOutlined, UnorderedListOutlined } from '@ant-design/icons';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
+import EventBar from './EventBar';
+// import TaskBox from './TaskBox';
 
-// const { Header } = Layout;
-
-// const NavBar: React.FC = () => {
-//   const location = useLocation(); // 获取当前路由路径
-//   const selectedKey = location.pathname === '/' ? '1' : '2'; // 根据路径确定选中的菜单项
-
-//   const items = [
-//     {
-//       key: '1',
-//       icon: <HomeOutlined />,
-//       label: <Link to="/">Home</Link>,
-//     },
-//     {
-//       key: '2',
-//       icon: <UnorderedListOutlined />,
-//       label: <Link to="/mytodolist">My Todo List</Link>,
-//     },
-//   ];
-
-//   return (
-//     <Header className="header">
-//       <div className="logo" />
-//       <Menu
-//         theme="dark"
-//         mode="horizontal"
-//         items={items}
-//         selectedKeys={[selectedKey]} // 动态设置选中的菜单项
-//       />
-//     </Header>
-//   );
-// };
-
-// export default NavBar;
-
-
-import React, { useState } from 'react';
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import { Button, Layout, Menu, theme } from 'antd';
-
-const { Header, Sider, Content } = Layout;
+interface Event {
+  title: string;
+  ['To do']: string[];
+  ['In progress']: string[];
+  ['Completed']: string[];
+}
 
 const App: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+  const initEvent: Event[] = useMemo(() => [
+    {
+      title: 'Add a new Event',
+      ['To do']: [],
+      ['In progress']: [],
+      ['Completed']: [],
+    },
+  ], []);
+
+  const [events, setEvents] = useState<Event[]>(() => {
+    const storedEvents = localStorage.getItem('events');
+    return storedEvents ? JSON.parse(storedEvents) : initEvent;
+  });
+
+  const [currentEvent, setCurrentEvent] = useState<Event>(events[0]);
+
+  const updateEvents = useCallback(async () => {
+    try {
+      if (!events.length) {
+        await localStorage.setItem('events', JSON.stringify(initEvent));
+        setEvents(JSON.parse(localStorage.getItem('events') || '[]'));
+      } else {
+        await localStorage.setItem('events', JSON.stringify(events));
+      }
+    } catch (e) {
+      console.error('Failed to modify events!', e);
+    }
+  }, [events, initEvent]);
+
+  useEffect(() => {
+    updateEvents();
+  }, [events, updateEvents]);
 
   return (
-    <div>123</div>
+    <div className='App'>
+      Home
+    </div>
   );
 };
 
 export default App;
-
-

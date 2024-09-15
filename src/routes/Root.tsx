@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import { Button, Layout, Menu, theme } from 'antd';
-import { HomeOutlined, UnorderedListOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { HomeOutlined, UnorderedListOutlined, AreaChartOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
 
 const Root: React.FC = () => {
-  const location = useLocation(); // 获取当前路由路径
+  const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
-  const selectedKey = location.pathname === '/' ? '1' : '2'; // 根据路径确定选中的菜单项
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  // 根据当前路径设置选中的菜单项
+  const getSelectedKey = () => {
+    const path = location.pathname;
+    if (path === '/') return '1';
+    if (path.startsWith('/mytodolist')) return '2';
+    if (path.startsWith('/about')) return '3';
+    if (path.startsWith('/other')) return '4';
+    return '1'; // 默认值
+  };
+
+  const selectedKey = getSelectedKey();
 
   const items = [
     {
@@ -21,7 +33,7 @@ const Root: React.FC = () => {
     },
     {
       key: '2',
-      icon: <UnorderedListOutlined />,
+      icon: <AreaChartOutlined />,
       label: <Link to="/mytodolist">My Todo List</Link>,
     },
     {
@@ -37,15 +49,6 @@ const Root: React.FC = () => {
   ];
 
   return (
-    // <Header className="header">
-    //   <div className="logo" />
-    //   <Menu
-    //     theme="dark"
-    //     mode="horizontal"
-    //     items={items}
-    //     selectedKeys={[selectedKey]} // 动态设置选中的菜单项
-    //   />
-    // </Header>
     <Layout style={{ minHeight: '100vh' }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />

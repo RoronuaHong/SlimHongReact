@@ -5,10 +5,10 @@ import EventBar from '../EventBar';
 const App: React.FC = () => {
   const initEvent = useMemo(() => [
     {
-      title: 'Add a new Event',
-      ['To do']: [],
-      ['In progress']: [],
-      ['Completed']: [],
+      title: '添加一个新待办事项',
+      ['待完成']: [],
+      ['进行中']: [],
+      ['已完成']: [],
     },
   ], []);
 
@@ -16,7 +16,7 @@ const App: React.FC = () => {
     const storedEvents = localStorage.getItem('events');
     return storedEvents ? JSON.parse(storedEvents) : initEvent;
   });
-  
+
   return (
     <div className='App'>
       <EventBar

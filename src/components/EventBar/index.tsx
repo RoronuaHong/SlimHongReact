@@ -4,9 +4,7 @@ import AddEventButton from '../../widgets/AddEventButton';
 // Define the shape of an event
 interface IEvent {
   title: string;
-  ['待完成']: string[];
-  ['进行中']: string[];
-  ['已完成']: string[];
+  [key: string]: any; // Assuming the columns (tags) are dynamic
 }
 
 // Define the props type for EventBar
@@ -19,7 +17,7 @@ interface IEventBar {
 
 const EventBar: React.FC<IEventBar> = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
   const handleAdd = useCallback(() => {
-    const title = prompt('请输入待办事项:')!;
+    const title = prompt('请输入待办事项:');
 
     if (
       events.find((event) => event?.title?.toLowerCase() === title?.toLowerCase())
@@ -71,3 +69,4 @@ const EventBar: React.FC<IEventBar> = ({ events, setEvents, currentEvent, setCur
 }
 
 export default EventBar;
+

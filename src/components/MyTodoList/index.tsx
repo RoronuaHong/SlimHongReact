@@ -11,7 +11,7 @@ interface IEvent {
   ['已完成']: string[];
 }
 
-const App: React.FC = () => {
+const MyTodoList: React.FC = () => {
   const initEvent: IEvent[] = useMemo(() => [
     {
       title: '添加一个新待办事项',
@@ -65,4 +65,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default MyTodoList;

@@ -1,5 +1,5 @@
 import React, { Fragment, useCallback } from 'react';
-import AddEventButton from '../../widgets/AddEventButton';
+import AddEventButton from '@/widgets/AddEventButton';
 
 // Define the shape of an event
 interface IEvent {
